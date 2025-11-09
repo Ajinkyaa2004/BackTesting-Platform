@@ -1,0 +1,5 @@
+data/downloads/upload_*.csv
+nq_ohlcv_minute_combined_2020_2025.csv
+*.db
+*.html
+plots/
