@@ -20,10 +20,10 @@ Built with FastAPI, Vanilla JS, Chart.js, and SQLite — offering real-time metr
 🛠 Tech Stack
 
 Frontend: HTML, CSS, JavaScript (Vanilla), Chart.js, PapaParse
-
 Backend: Python 3.13, FastAPI, SQLAlchemy, Uvicorn
-
 Database: SQLite
 
-🔗 Live Demo: (Add your link here once deployed)
+🔗 Links
+
+🌐 Live Demo: (Add your link here once deployed)
 📂 GitHub: (Add your repo link here)
