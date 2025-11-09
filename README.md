@@ -1,30 +1,29 @@
-# Trading Strategy Backtesting Backend (FastAPI)
+📈 Trading Strategy Backtesting Web App
 
-## Quickstart
+A web-based platform to run, analyze, and visualize trading strategy backtests on historical OHLCV data.
+Built with FastAPI, Vanilla JS, Chart.js, and SQLite — offering real-time metrics, trade logs, and performance charts.
 
-1. Create venv and install deps
-```
-pip install -r requirements.txt
-```
+🚀 Features
 
-2. Run API
-```
-uvicorn backend.app:app --reload
-```
+📊 Run backtests on uploaded CSV (OHLCV) data
 
-3. Endpoints
-- POST /backtests (multipart: file, params_json) -> { id }
-- GET /backtests -> list
-- GET /backtests/{id} -> detail JSON with metrics, charts, download links
-- GET /downloads/{filename} -> file download
+⚙️ Automated Python strategy execution (trail_backtesting.py)
 
-Params JSON matches 11 inputs in `backend/schemas.py` BacktestParams.
+💾 Store and retrieve metrics, trades, and equity curves
 
-## Notes
-- Uses SQLite by default; set DATABASE_URL env for Postgres/MySQL.
-- CSV must include: date_time|datetime|date time + open, high, low, close.
-- Large files supported up to 100MB (configurable with MAX_UPLOAD_BYTES).
+📈 Interactive charts using Chart.js
 
-## Using existing strategy
-The backend imports and wraps `trail_backtesting.py` and does not alter its core logic.
-# BackTesting-Platform
+⬇️ Download metrics and trades as CSV/HTML
+
+🔄 Live polling for backtest status updates
+
+🛠 Tech Stack
+
+Frontend: HTML, CSS, JavaScript (Vanilla), Chart.js, PapaParse
+
+Backend: Python 3.13, FastAPI, SQLAlchemy, Uvicorn
+
+Database: SQLite
+
+🔗 Live Demo: (Add your link here once deployed)
+📂 GitHub: (Add your repo link here)
