@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Backtesting Platform</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Trading Strategy Backtesting</h1>
+  </header>
+  <main>
+    <section id="config">
+      <h2>Configuration</h2>
+      <div class="card">
+        <form id="upload-form">
+          <div class="field">
+            <label>Upload CSV (OHLC)</label>
+            <input type="file" id="file" accept=".csv" required />
+            <small>Required columns: date_time or datetime or "date time", open, high, low, close</small>
+          </div>
+
+          <div id="file-info" class="muted"></div>
+          <div id="preview" class="table-wrap hidden">
+            <h4>Preview (first 10 rows)</h4>
+            <table id="preview-table"></table>
+          </div>
+
+          <h3>Parameters</h3>
+          <div class="grid">
+            <label>Starting Balance <input type="number" id="starting_balance" value="100000" min="1000" step="1000"></label>
+            <label>Take Profit (Ticks) <input type="number" id="tp_ticks" value="20" min="10" max="50" step="1"></label>
+            <label>Stop Loss (Ticks) <input type="number" id="sl_ticks" value="20" min="10" max="50" step="1"></label>
+            <label>Risk Percentage (%) <input type="number" id="risk_percentage" value="1" min="0.5" max="5" step="0.1"></label>
+            <label>Trailing Stop <input type="checkbox" id="trailing_stop"></label>
+            <label>Trailing Stop Ticks <input type="number" id="trailing_stop_ticks" value="5" min="3" max="20" step="1"></label>
+            <label>Tick Size <input type="number" id="tick_size" value="0.25" step="0.01"></label>
+            <label>Tick Value <input type="number" id="tick_value" value="5" step="0.01"></label>
+            <label>Commission per Trade <input type="number" id="commission_per_trade" value="5" step="0.01"></label>
+            <label>Slippage (Ticks) <input type="number" id="slippage_ticks" value="1" step="1"></label>
+            <label>Contract Margin <input type="number" id="contract_margin" value="13000" step="100"></label>
+          </div>
+
+          <div class="actions">
+            <button type="submit" id="run" disabled>Run Backtest</button>
+            <span id="status" class="muted"></span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="results" class="hidden">
+      <h2>Results</h2>
+      <div id="downloads" class="card">
+        <button id="download-trades" disabled>Download trades.csv</button>
+        <button id="download-metrics" disabled>Download metrics.csv</button>
+      </div>
+
+      <div id="metrics" class="metrics-grid"></div>
+
+      <div class="charts">
+        <div class="card">
+          <h3>Equity Curve</h3>
+          <canvas id="equityChart"></canvas>
+        </div>
+        <div class="card">
+          <h3>Monthly Returns</h3>
+          <canvas id="monthlyChart"></canvas>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="table-header">
+          <h3>Trade History</h3>
+          <div>
+            <button id="load-trades">Load Table</button>
+            <select id="pnl-filter">
+              <option value="all">All</option>
+              <option value="wins">Wins</option>
+              <option value="losses">Losses</option>
+            </select>
+            <select id="side-filter">
+              <option value="both">Both</option>
+              <option value="long">Long</option>
+              <option value="short">Short</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table id="trades-table"></table>
+          <div class="pagination">
+            <button id="prev-page">Prev</button>
+            <span id="page-info"></span>
+            <button id="next-page">Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+<!-- open web/index.html -->

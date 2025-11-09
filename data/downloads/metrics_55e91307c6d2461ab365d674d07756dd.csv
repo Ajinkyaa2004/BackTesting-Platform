@@ -1,0 +1,2 @@
+total_trades,wins,losses,win_rate,avg_pnl,total_pnl,avg_win,avg_loss,risk_reward_ratio,max_drawdown,sharpe_ratio,best_trade,worst_trade
+15497,8246,7251,0.5321029876750338,-8.579402464993224,-132955.0,85.0,-115.0,0.7391304347826086,139770.0,-51.78709675856678,85.0,-115.0
